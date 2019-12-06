@@ -10,10 +10,10 @@ build:
   stage: build
   before_script:
     - echo $DOCKER_USERNAME
-    - docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
+    - docker login --username ${CI_REGISTRY_USER} --password ${CI_REGISTRY_PASSWORD} ${CI_REGISTRY}
   script:
-    - docker build -t gitlab-ci/ruby-build:latest .
-    - docker push azadehafzarhub/gitlab-ci-ruby-build
+    - docker build --pull -t ${CI_REGISTRY_IMAGE} .
+    - docker push ${CI_REGISTRY_IMAGE}
   after_script:
     - docker logout
   only:
