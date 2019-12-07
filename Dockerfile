@@ -5,6 +5,9 @@ MAINTAINER Mohammad Mahdi Baghbani Pourvahid <MahdiBaghbani@protonmail.com>
 # update apt database.
 RUN apt-get update -y
 
+# install apt utils to speed up configs.
+RUN apt-get install -y --no-install-recommends apt-utils
+
 # install curl.
 RUN apt-get install -y curl
 
@@ -14,7 +17,6 @@ RUN apt-get install -y gnupg
 # install ruby version manager (rvm) using curl, then install stable ruby with rvm.
 RUN gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
 RUN \curl -sSL https://get.rvm.io
-RUN source /usr/local/rvm/scripts/rvm
 
 # install required ruby versions. 
 RUN rvm install 2.3
