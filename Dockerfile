@@ -9,10 +9,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 SHELL ["/bin/bash", "-l", "-c"]
 
 # update apt database.
-RUN apt-get update
-
-# upgrade ubuntu.
-RUN apt-get upgrade --assume-yes
+RUN apt-get update --assume-yes
 
 # install apt utils to speed up configs.
 RUN apt-get install --assume-yes --no-install-recommends apt-utils
@@ -40,7 +37,7 @@ RUN \curl -sSL https://get.rvm.io | bash -s stable
 
 # setup rvm.
 RUN echo "source /etc/profile.d/rvm.sh" >> ~/.bashrc
-RUN /user/local/rvm/bin/rvm-shell -c "rvm requirements"
+RUN rvm requirements
 
 # test
 RUN whereis rvm
