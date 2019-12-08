@@ -35,17 +35,16 @@ RUN gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A
 # install ruby version manager (rvm) using curl.
 RUN \curl -sSL https://get.rvm.io | bash -s stable
 
+
+# switch back to root
+USER root
+
 # setup rvm.
 RUN echo "source /etc/profile.d/rvm.sh" >> ~/.bashrc
 
 # test
 RUN whereis rvm
-RUN command rvm
 RUN rvm
-
-# switch back to root
-USER root
-
 RUN rvm requirements
 
 # specify working directory.
