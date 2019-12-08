@@ -37,7 +37,6 @@ RUN \curl -sSL https://get.rvm.io | bash -s stable
 
 # setup rvm.
 RUN echo "source /etc/profile.d/rvm.sh" >> ~/.bashrc
-RUN rvm requirements
 
 # test
 RUN whereis rvm
@@ -46,6 +45,8 @@ RUN rvm
 
 # switch back to root
 USER root
+
+RUN rvm requirements
 
 # specify working directory.
 ENV TESTBUILD ~/test_and_build
