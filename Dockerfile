@@ -36,8 +36,6 @@ RUN echo "source /etc/profile.d/rvm.sh" >> ~/.bashrc
 # install rvm requirements.
 RUN rvm requirements
 
-RUN whereis rvm
-
 # specify working directory.
 ENV TESTBUILD ~/test_and_build
 RUN mkdir -p $TESTBUILD
