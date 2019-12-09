@@ -3,18 +3,31 @@ image: docker:latest
 services:
   - docker:dind
 
-before_script:
-  - docker info
-
-build:
-  stage: build
+default:
   before_script:
+    - docker info
     - docker login --username ${CI_REGISTRY_USER} --password ${CI_REGISTRY_PASSWORD} ${CI_REGISTRY}
-  script:
-    - docker build --pull -t ${CI_REGISTRY_IMAGE}:ready -t ${CI_REGISTRY_IMAGE}:latest .
-    - docker push ${CI_REGISTRY_IMAGE}:ready
   after_script:
     - docker logout
+
+build_tagged:
+  stage: build
+  script:
+    - docker build --pull -t ${CI_REGISTRY_IMAGE}:latest -t ${CI_REGISTRY_IMAGE}:${CI_COMMIT_TAG} .
+    - docker push ${CI_REGISTRY_IMAGE}:latest
+		- docker push ${CI_REGISTRY_IMAGE}:${CI_COMMIT_TAG}
   only:
     - master
+    - tags
+
+build_untaged:
+  stage: build
+  script:
+    - docker build --pull -t ${CI_REGISTRY_IMAGE}:ready .
+    - docker push ${CI_REGISTRY_IMAGE}:ready
+  only:
+    - master
+		- merge_requests
+  except:
+    - tags
 
