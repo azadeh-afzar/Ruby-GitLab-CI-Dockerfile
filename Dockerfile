@@ -37,7 +37,7 @@ RUN echo "source /etc/profile.d/rvm.sh" >> ~/.bashrc
 RUN rvm requirements
 
 # create symbolic link for rvm.
-RUN ln -sf /usr/local/rvm/bin/rvm /usr/local/bin
+RUN ln -sf /usr/local/rvm/bin/rvm /usr/local/bin/rvm
 
 # specify working directory.
 ENV TESTBUILD ~/test_and_build
