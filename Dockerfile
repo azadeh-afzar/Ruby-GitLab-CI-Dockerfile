@@ -33,11 +33,11 @@ RUN \curl -sSL https://get.rvm.io | bash -s stable
 # setup rvm.
 RUN echo "source /etc/profile.d/rvm.sh" >> ~/.bashrc
 
+# add rvm binary to path.
+RUN echo "export PATH=${PATH}:/usr/local/rvm/bin" >> ~/.bashrc
+
 # install rvm requirements.
 RUN rvm requirements
-
-# create symbolic link for rvm.
-RUN ln -sf /usr/local/rvm/bin/rvm /usr/local/bin/rvm
 
 # specify working directory.
 ENV TESTBUILD ~/test_and_build
