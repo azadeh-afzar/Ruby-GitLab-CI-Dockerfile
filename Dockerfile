@@ -31,10 +31,10 @@ RUN gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A
 RUN \curl -sSL https://get.rvm.io | bash -s stable
 
 # setup rvm.
-RUN echo "source /etc/profile.d/rvm.sh" >> ~/.bashrc
+RUN echo "source /etc/profile.d/rvm.sh" >> ~/.bash_profile
 
 # add rvm binary to path.
-RUN echo "export PATH=${PATH}:/usr/local/rvm/bin" >> ~/.bashrc
+RUN echo "export PATH=${PATH}:/usr/local/rvm/bin" >> ~/.bash_profile
 
 # install rvm requirements.
 RUN rvm requirements
