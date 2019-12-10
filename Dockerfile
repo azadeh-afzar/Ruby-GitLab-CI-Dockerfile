@@ -15,7 +15,7 @@ RUN apt-get update --assume-yes
 RUN apt-get install --assume-yes --no-install-recommends apt-utils
 
 # install git.
-RUN apt-get install git
+RUN apt-get install --assume-yes git
 
 # install curl.
 RUN apt-get install --assume-yes curl
