@@ -36,6 +36,9 @@ RUN \curl -sSL https://get.rvm.io | bash -s stable
 # setup rvm.
 RUN echo "source /etc/profile.d/rvm.sh" >> ~/.bash_profile
 
+# source bash_profile.
+RUN source ~/.bash_profile
+
 # install rvm requirements.
 RUN rvm requirements
 
