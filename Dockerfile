@@ -14,6 +14,9 @@ RUN apt-get update --assume-yes
 # install apt utils to speed up configs.
 RUN apt-get install --assume-yes --no-install-recommends apt-utils
 
+# install git.
+RUN apt-get install git
+
 # install curl.
 RUN apt-get install --assume-yes curl
 
