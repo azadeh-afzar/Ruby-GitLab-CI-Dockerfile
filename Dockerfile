@@ -14,6 +14,14 @@ RUN apt-get update --assume-yes
 # install apt utils to speed up configs.
 RUN apt-get install --assume-yes --no-install-recommends apt-utils
 
+# set locale.
+RUN apt-get install --assume-yes locales
+RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
+RUN locale-gen
+ENV LANG en_US.UTF-8  
+ENV LANGUAGE en_US:en  
+ENV LC_ALL en_US.UTF-8  
+
 # install git.
 RUN apt-get install --assume-yes git
 
