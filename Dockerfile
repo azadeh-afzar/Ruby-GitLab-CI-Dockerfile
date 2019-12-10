@@ -26,8 +26,8 @@ RUN apt-get install --assume-yes gnupg
 # disable ipv6 in docker for gpg.
 RUN mkdir -p ~/.gnupg
 RUN chmod 700 ~/.gnupg
-RUN chmod 600 ~/.gnupg/*
 RUN echo "disable-ipv6" >> ~/.gnupg/dirmngr.conf
+RUN chmod 600 ~/.gnupg/*
 
 # install codeclimate coverage reporter.
 RUN curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > /usr/bin/cc-test-reporter
