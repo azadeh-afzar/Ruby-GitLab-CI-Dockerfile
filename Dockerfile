@@ -42,11 +42,17 @@ RUN \curl -sSL https://get.rvm.io | bash -s stable
 # setup rvm.
 RUN echo "source /etc/profile.d/rvm.sh" >> ~/.bash_profile
 
-# source bash_profile.
-RUN source ~/.bash_profile
-
 # install rvm requirements.
 RUN rvm requirements
+
+# install ruby versions.
+RUN rvm install 2.0
+RUN rvm install 2.1
+RUN rvm install 2.2
+RUN rvm install 2.3
+RUN rvm install 2.4
+RUN rvm install 2.5
+RUN rvm install 2.6
 
 # specify working directory.
 ENV TESTBUILD ~/test_and_build
