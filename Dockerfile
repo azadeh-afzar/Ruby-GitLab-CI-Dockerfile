@@ -36,9 +36,6 @@ RUN \curl -sSL https://get.rvm.io | bash -s stable
 # setup rvm.
 RUN echo "source /etc/profile.d/rvm.sh" >> ~/.bash_profile
 
-# add rvm binary to path.
-RUN echo "export PATH=${PATH}:/usr/local/rvm/bin" >> ~/.bash_profile
-
 # install rvm requirements.
 RUN rvm requirements
 
