@@ -26,7 +26,15 @@ build_untaged:
     - docker push ${CI_REGISTRY_IMAGE}:ready
   only:
     - master
-    - merge_requests
   except:
     - tags
+
+build_merge_requests:
+  stage: build
+  script:
+    - docker build --pull -t ${CI_REGISTRY_IMAGE}:merge .
+    - docker push ${CI_REGISTRY_IMAGE}:merge
+  only:
+    - merge_requests
+
 
