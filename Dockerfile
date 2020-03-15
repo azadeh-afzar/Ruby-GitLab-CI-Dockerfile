@@ -3,14 +3,14 @@ FROM azadehafzarhub/gitlab-ci-ubuntu-build:ready
 MAINTAINER Mohammad Mahdi Baghbani Pourvahid <MahdiBaghbani@protonmail.com>
 
 # install rbenv.
-RUN curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash
+RUN curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash || true
 
 # setup rbenv path.
 RUN echo "export PATH='$HOME/.rbenv/bin:$PATH'" >> ~/.bash_profile
 RUN echo "eval '$(rbenv init -)'" >> ~/.bash_profile
 
 # check installation.
-RUN curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
+RUN curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash || true
 
 # instal ruby versions.
 RUN rbenv install 2.1.10
