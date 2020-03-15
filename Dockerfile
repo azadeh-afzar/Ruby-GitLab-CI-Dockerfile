@@ -13,10 +13,6 @@ RUN echo "eval '$(rbenv init -)'" >> ~/.bash_profile
 RUN curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash || true
 
 # instal ruby versions.
-RUN rbenv install 2.1.10
-RUN rbenv install 2.2.10
-RUN rbenv install 2.3.8
-RUN rbenv install 2.4.9
 RUN rbenv install 2.5.7
 RUN rbenv install 2.6.5
 RUN rbenv install 2.7.0
