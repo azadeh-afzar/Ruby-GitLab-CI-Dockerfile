@@ -44,26 +44,27 @@ RUN chmod 600 ~/.gnupg/*
 RUN curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > /usr/bin/cc-test-reporter
 RUN chmod +x /usr/bin/cc-test-reporter
 
-# add rvm keys.
-RUN gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+# install rbenv.
+RUN curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash
 
-# install ruby version manager (rvm) using curl.
-RUN \curl -sSL https://get.rvm.io | bash -s stable
+# setup rbenv path.
+RUN echo "export PATH='$HOME/.rbenv/bin:$PATH'" >> ~/.bash_profile
+RUN echo "eval '$(rbenv init -)'" >> ~/.bash_profile
 
-# setup rvm.
-RUN echo "source /etc/profile.d/rvm.sh" >> ~/.bash_profile
+# check installation.
+curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
 
-# install rvm requirements.
-RUN rvm requirements
+# instal ruby versions.
+RUN rbenv install 2.1.10
+RUN rbenv install 2.2.10
+RUN rbenv install 2.3.8
+RUN rbenv install 2.4.9
+RUN rbenv install 2.5.7
+RUN rbenv install 2.6.5
+RUN rbenv install 2.7.0
 
-# install ruby versions.
-RUN rvm install 2.0
-RUN rvm install 2.1
-RUN rvm install 2.2
-RUN rvm install 2.3
-RUN rvm install 2.4
-RUN rvm install 2.5
-RUN rvm install 2.6
+# choose global ruby version.
+RUN rbenv global 2.7.0
 
 # specify working directory.
 ENV TESTBUILD ~/test_and_build
