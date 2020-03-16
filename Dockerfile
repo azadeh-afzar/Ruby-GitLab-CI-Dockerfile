@@ -1,6 +1,6 @@
-FROM azadehafzarhub/gitlab-ci-ubuntu-build:ready
+FROM azadehafzarhub/gitlab-ci-ubuntu-build:latest
 
-MAINTAINER Mohammad Mahdi Baghbani Pourvahid <MahdiBaghbani@protonmail.com>
+LABEL maintainer="Mohammad Mahdi Baghbani Pourvahid <MahdiBaghbani@protonmail.com>"
 
 # install rbenv.
 RUN curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash || true
