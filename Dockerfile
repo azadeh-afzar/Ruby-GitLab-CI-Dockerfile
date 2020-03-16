@@ -20,8 +20,3 @@ RUN rbenv install 2.7.0
 # choose global ruby version.
 RUN rbenv global 2.7.0
 
-# specify working directory.
-ENV TESTBUILD ~/test_and_build
-RUN mkdir -p $TESTBUILD
-WORKDIR $TESTBUILD
-
