@@ -17,6 +17,16 @@ RUN rbenv install 2.5.7
 RUN rbenv install 2.6.5
 RUN rbenv install 2.7.0
 
+#update bundler for all versions.
+RUN rbenv global 2.5.7
+RUN gem install bundler
+
+RUN rbenv global 2.6.5
+RUN gem install bundler
+
+RUN rbenv global 2.7.0
+RUN gem install bundler
+
 # choose global ruby version.
 RUN rbenv global 2.7.0
 
